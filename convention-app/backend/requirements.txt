@@ -1,0 +1,6 @@
+Flask==2.1.0
+Flask-SQLAlchemy==2.5.1
+Flask-Migrate==3.1.0
+Werkzeug==2.1.0
+Marshmallow==3.14.1
+qrcode[pil]==7.3.1

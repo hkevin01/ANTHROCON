@@ -1,0 +1,28 @@
+<MyScreenManager>:
+    LoginScreen:
+    HomeScreen:
+
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Welcome to the Convention App'
+        TextInput:
+            id: email_input
+            hint_text: 'Email'
+        TextInput:
+            id: password_input
+            hint_text: 'Password'
+            password: True
+        Button:
+            text: 'Login'
+            on_press: root.login(email_input.text, password_input.text)
+
+<HomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Home Screen'
+        Button:
+            text: 'View Events'
+            on_press: root.manager.current = 'events'

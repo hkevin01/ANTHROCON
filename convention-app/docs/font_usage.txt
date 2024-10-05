@@ -1,0 +1,26 @@
+#### Using Fonts in Your Application
+
+To use a custom font in a Kivy Label:
+
+```python
+from kivy.uix.label import Label
+
+label = Label(text="Welcome to the Convention App", font_name='assets/fonts/Roboto-Regular.ttf')
+```
+
+#### Using Icons in Buttons
+
+```python
+from kivy.uix.button import Button
+
+class CustomButton(Button):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.background_normal = 'assets/icons/home_icon.png'
+```
+
+### Conclusion
+
+This structure for the `assets` folder will help you organize your application's resources effectively. 
+Make sure to include the actual files in the respective folders based on your design needs. 
+Adjust the names and formats as necessary to fit your application’s branding and design guidelines.

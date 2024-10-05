@@ -1,0 +1,112 @@
+Sure! Let's create the necessary Docker files for both the frontend and backend of your convention application. This will allow you to build and run your application in a containerized environment.
+
+### Complete Structure of `docker/`
+
+1. **`frontend.Dockerfile`**
+2. **`backend.Dockerfile`**
+3. **`docker-compose.yml`**
+
+### 1. `frontend.Dockerfile`
+
+This file defines how to build the Docker image for the frontend application (Kivy app).
+
+```dockerfile
+# Use a base image with Python
+FROM python:3.11
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the requirements file
+COPY frontend/requirements.txt ./requirements.txt
+
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the entire frontend folder into the container
+COPY frontend/ ./frontend/
+
+# Set the environment variable for display
+ENV DISPLAY=:0
+
+# Command to run the Kivy application
+CMD ["python", "frontend/kivy_app/main.py"]
+```
+
+### 2. `backend.Dockerfile`
+
+This file defines how to build the Docker image for the backend application (Flask API).
+
+```dockerfile
+# Use a base image with Python
+FROM python:3.11
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the requirements file
+COPY backend/requirements.txt ./requirements.txt
+
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the entire backend folder into the container
+COPY backend/ ./backend/
+
+# Set the environment variable for Flask
+ENV FLASK_APP=backend.main
+
+# Command to run the Flask application
+CMD ["flask", "run", "--host=0.0.0.0"]
+```
+
+### 3. `docker-compose.yml`
+
+This file defines how to run both the frontend and backend services together.
+
+```yaml
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend.Dockerfile
+    ports:
+      - "5000:5000"  # Expose port for frontend (adjust if needed)
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend.Dockerfile
+    ports:
+      - "5001:5000"  # Expose port for backend API
+    environment:
+      - DATABASE_URL=sqlite:///app.db  # Adjust for your DB configuration
+```
+
+### Instructions to Build and Run
+
+1. **Create the Directory Structure**: Ensure your project directory contains the `docker/` directory with the above files.
+
+2. **Build the Docker Images**: Navigate to your project root (where the `docker-compose.yml` file is located) and run:
+
+   ```bash
+   docker-compose build
+   ```
+
+3. **Run the Docker Containers**: Start the services using:
+
+   ```bash
+   docker-compose up
+   ```
+
+4. **Accessing the Application**:
+   - The backend will be accessible at `http://localhost:5001/`.
+   - The frontend will be accessible at `http://localhost:5000/`.
+
+### Conclusion
+
+This setup provides a complete dockerized environment for your convention application, allowing you to run both the frontend and backend services seamlessly. Adjust the port mappings and other configurations as necessary to suit your needs.
