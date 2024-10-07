@@ -5,3 +5,6 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin git@github.com:hkevin01/WEBSITE.git
 git push -u origin main
+
+
+git rm -r --cached venv
