@@ -1,0 +1,18 @@
+{
+    "events": [
+        {
+            "id": 1,
+            "name": "Opening Ceremony",
+            "time": "10:00 AM",
+            "description": "Kick-off the convention with the opening ceremony.",
+            "location": "Main Hall"
+        },
+        {
+            "id": 2,
+            "name": "Keynote Speech",
+            "time": "11:00 AM",
+            "description": "Hear from our keynote speaker.",
+            "location": "Main Hall"
+        }
+    ]
+}

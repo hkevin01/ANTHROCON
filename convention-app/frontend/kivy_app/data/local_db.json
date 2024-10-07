@@ -1,0 +1,12 @@
+{
+    "users": {
+        "user1@example.com": {
+            "password": "hashed_password_here",
+            "qr_code": "path/to/qr_code.png"
+        },
+        "user2@example.com": {
+            "password": "hashed_password_here",
+            "qr_code": "path/to/qr_code.png"
+        }
+    }
+}

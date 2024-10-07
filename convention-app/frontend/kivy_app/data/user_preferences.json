@@ -1,0 +1,9 @@
+{
+    "user_email@example.com": {
+        "theme": "dark",
+        "notifications": {
+            "events": true,
+            "wait_times": false
+        }
+    }
+}
